@@ -17,5 +17,12 @@ $\Rightarrow$ Die Sprache t enthält kein $\epsilon$
     \end{itemize}
     Es gibt keine andere Möglichkeit, dass $fold^{Bool}(t)=1$ sein kann.
     \item $\epsilon\in fold^{Lang}(t) \Rightarrow fold^{Bool}(t)=1$
-    
+    Die einzige Möglichkeit, dass $\epsilon$ in einer Sprache Liegt, ist dass
+    \begin{itemize}
+        \item Die Sprache $\left{\epsilon\right}$
+        \item Eine Sprache mit regulärem Ausdruck $t$ der Form: $t=star(t')$
+        \item Eine Sprache die mit einer anderen Sprache vereinigt wird, in der $\epsilon$ liegt
+        \item Die Konkatenation zweier Sprachen, in denen $\epsilon$ liegt
+    \end{itemize}
+    In allen Fällen ist $fold^{Bool}(t)=1$
 \end{enumerate}
