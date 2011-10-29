@@ -3,5 +3,18 @@
 $fold^{Bool}(t) =
 fold^{Bool}(\emptyset * star(\emptyset) | a * star(a)) = 
 (0 \wedge 1) \vee (0 \wedge 1) = 0$ \\
-$\Longrightarrow$ Die Sprache t enthält kein $\epsilon$
+$\Rightarrow$ Die Sprache t enthält kein $\epsilon$
 \subsection*{2)}
+\begin{enumerate}
+    \item $fold^{Bool}(t)=1\Rightarrow\epsilon\in fold^{Lang}(t)$
+    Falls $fold^{Bool}(t)=1$ und
+    \begin{itemize}
+        \item $t=\epsilon$ \textit{trivial}
+        \item $t$ in der Form $star(t')$: $\epsilon$ ist immer in der ''star-Menge''
+        \item $t$ in der Form $t_1 | t_2$, dann ist 
+        $fold^{Bool}(t_1)=1$ oder $fold^{Bool}(t_2)=1$ und nach Induktion $\epsilon\in fold^{Lang}(t_1)\Cup fold^{Lang}(t_2)$
+        \item $t$ in der Form $t_1 \cdot t_2$, dann ist $fold^{Bool}(t_1)=1$ und $fold^{Bool}(t_2)=1$ und die Konkatenation enthält auch $\epsilon$
+    \end{itemize}
+    Es gibt keine anderen möglichkeiten, dass $fold^{Bool}(t)=1$ sein kann.
+    \item \epsilon\in fold^{Lang}(t) \Rightarrow $fold^{Bool}(t)=1
+\end{enumerate}
