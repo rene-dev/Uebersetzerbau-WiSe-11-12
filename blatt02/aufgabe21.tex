@@ -6,7 +6,7 @@ fold^{Bool}(\emptyset * star(\emptyset) | a * star(a)) =
 $\Rightarrow$ Die Sprache t enthält kein $\epsilon$
 \subsection*{2)}
 \begin{enumerate}
-    \item $fold^{Bool}(t)=1\Rightarrow\epsilon\in fold^{Lang}(t)$
+    \item $fold^{Bool}(t)=1\Rightarrow\epsilon\in fold^{Lang}(t)$\\ 
     Falls $fold^{Bool}(t)=1$ und
     \begin{itemize}
         \item $t=\epsilon$ \textit{trivial}
@@ -16,7 +16,7 @@ $\Rightarrow$ Die Sprache t enthält kein $\epsilon$
         \item $t$ in der Form $t_1 \cdot t_2$, dann ist $fold^{Bool}(t_1)=1$ und $fold^{Bool}(t_2)=1$ und die Konkatenation enthält auch $\epsilon$
     \end{itemize}
     Es gibt keine andere Möglichkeit, dass $fold^{Bool}(t)=1$ sein kann.
-    \item $\epsilon\in fold^{Lang}(t) \Rightarrow fold^{Bool}(t)=1$
+    \item $\epsilon\in fold^{Lang}(t) \Rightarrow fold^{Bool}(t)=1$\\
     Die einzige Möglichkeit, dass $\epsilon$ in einer Sprache Liegt, ist dass
     \begin{itemize}
         \item Die Sprache $\{\epsilon\}$
