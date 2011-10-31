@@ -15,10 +15,10 @@ $\Sigma(G) = (\{Expr, Expr', Term, Term', Factor\},\{Int\},\{\\
 + \_ \_ : Term Expr' \rightarrow Expr',\\
 - \_ \_ : Term Expr' \rightarrow Expr',\\
 1 : 1 \rightarrow Expr',\\
-\_ \_ : Factor Term' \rightarrow Term,\\
+\_ \_' : Factor Term' \rightarrow Term,\\
 * \_ \_ : Factor Term' \rightarrow Term',\\
 / \_ \_ : Factor Term' \rightarrow Term',\\
-1 : 1 \rightarrow Term',\\
+1' : 1 \rightarrow Term',\\
 ( \_ ) : Expr \rightarrow Factor,\\
 int : Int \rightarrow Factor\}$\\
 
@@ -28,7 +28,7 @@ $\Sigma$-Grundtermalgebra $T_\Sigma=(A,OP)$ mit
 + \_ \_^{T_\Sigma} = + \_ \_,
 - \_ \_^{T_\Sigma} = + \_ \_,
 1^{T_\Sigma} = 1,
-\_ \_^{T_\Sigma} = \_ \_
+\_ \_'^{T_\Sigma} = \_ \_'
 ...\}\]
 \subsection*{2)} %Das ist irgendwie so im Skript notiert, aber das mach einfach keinen Sinn....
 $Word(G)_{Expr}=(Z\cup \bigcup BS)^*=\{Int,+,-,*,/,(,)\}^*\\
@@ -36,19 +36,31 @@ Word(G)_{Expr'}=\{Int,+,-,*,/,(,)\}^*\\
 Word(G)_{Term}=\{Int,+,-,*,/,(,)\}^*\\
 Word(G)_{Term'}=\{Int,+,-,*,/,(,)\}^*\\
 Word(G)_{Factor}=\{Int,+,-,*,/,(,)\}^*\\$
-%(2+3)*4
 
-%    _ _
-%   /   \
-%  _ _   1
+\begin{tikzpicture}[level/.style={sibling distance=60mm/#1}]
+\node (z){\_ \_}
+  child {node (a) {\_ \_'}
+    child {node (b) {( \_ )}
+      child {node {\_ \_}
+        child {node {$\_ \_'$}
+            child{node {Int}}
+            child{node {1}}
+        }
+        child {node {+ \_ \_}
+            child {node {\_ \_}
+                child {node {Int}}
+                child {node {1}}
+            }
+            child {node {1}}
+        }
+      } 
+    }
+    child {node {* \_ \_}
+      child {node {Int}}
+      child {node {1}}
+    }
+  }
+  child {node {1}
+};
 
-
-%   * _ _
-%   /   \
-%( _ )  Int
-%  |
-%+ _ _
-% /  \
-%Int Int
-
-
+\end{tikzpicture}
