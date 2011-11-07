@@ -1,0 +1,9 @@
+\section*{Aufgabe 3.2}
+\subsection*{1)}
+$G=(\{S,T\},\emptyset,\{a,b\},\{S\rightarrow aSb, S\rightarrow T, T\rightarrow aT, T\epsilon\}\\$
+$sum: \mathcal{P}_{fin(rhs(G))}\rightarrow T_{Reg(Z,BS)}(S)\\$
+$conc: rhs(G)\rightarrow T_{Reg(Z,BS)}(S)\\$
+$E(G): \{S,T\} \rightarrow T_{Reg({a,b},\emptyset)}(\{S,T\})\\$
+$s\mapsto sum(R_s)\\$
+$S\mapsto sum(R_S)=sum(\{aSb,T\})=conc(aSb)|conc(T)=(conc(a)\cdot conc(S)\cdot conc(b))|T=(a\cdot S\cdot b)|T$\\
+$T\mapsto sum(R_T)=sum(\{aT,\epsilon\})=conc(aT)|conc(\epsilon)=(conc(a)\cdot cond(T))|\epsilon(*)=(a\cdot T)|\epsilon(*)$
