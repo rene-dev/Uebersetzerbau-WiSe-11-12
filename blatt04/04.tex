@@ -1,0 +1,75 @@
+%Erzeugt mit dem LaTeX-Generator: http://latex.sehnot.de
+
+%Schriftgr§e, Layout, Papierformat, Art des Dokumentes
+\documentclass[11pt,oneside,a4paper]{scrartcl}
+
+%Einstellungen der Seitenrnder
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+\usepackage{tikz}
+%neue Rechtschreibung
+\usepackage{ngerman}
+
+%Umlaute ermglichen
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%Komische Zeichen
+\usepackage{amssymb}
+
+%Kopf- und Fu§zeile
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+%Listings
+%\usepackage{listings}
+%\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt} 
+\usepackage{listings,color}
+\lstset{
+language=PHP,
+basicstyle=\footnotesize,
+commentstyle=\color{cyan}\emph,
+stringstyle=\color{magenta}\ttfamily,
+showstringspaces=false,
+showspaces=false, 
+showtabs=true,
+keywordstyle=\color{black}\bfseries,
+numbers=left,
+numberstyle=\footnotesize,
+stepnumber=5,
+numbersep=5pt,
+firstnumber=1,
+tabsize=3,
+tab=\hspace{\stretch{1}},
+captionpos=b,
+breaklines=true
+%tab=\rightarrowfill
+}
+
+%Kopfzeile links bzw. innen
+\fancyhead[R]{Übersetzerbau Blatt 4\\}
+%Kopfzeile mittig
+\fancyhead[L]{Gruppe: Di 16 Uhr\\ Rene Hopf 131247, Christoph Stahl 116531, Sabrina Friesenborg 127532}
+%Linie oben
+\renewcommand{\headrulewidth}{0.5pt}
+
+%Fu§zeile rechts bzw. au§en
+\fancyfoot[R]{\thepage}
+%Linie unten
+\renewcommand{\footrulewidth}{0pt}
+
+%\documentclass{article}
+\usepackage{hyperref}
+\usepackage{amsmath}
+%\usepackage[applemac]{inputenc}
+%\usepackage[ngerman]{babel}
+
+%\usepackage{fancyhdr}
+%\pagestyle{plain}
+
+
+\begin{document}
+\include{aufgabe41}
+\include{aufgabe42}
+\end{document}
+
+
