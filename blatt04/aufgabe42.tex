@@ -1,8 +1,40 @@
 \section*{Aufgabe 4.2}
 \subsection*{1)}
-\[\{a\}\cdot\{a\}^*\cdot\{b\}^*\cdot\{b\}\]
-\[h_a: <a> \mapsto <unfold^A(a)>=<\mathcal{L}(A,a)> = <L>\]
+\[L=\{a\}\cdot\{a\}^*\cdot\{b\}^*\cdot\{b\}\]
+$\delta(L)(a)=\{a\}^*\cdot\{b\}^*\cdot\{b\}=L_a$\\
+$\delta(L)(b)=\{\}=\emptyset$\\
+$\delta(L_a)(a)=\{a\}*\cdot\{b\}*\cdot\{b\}=L_a$\\
+$\delta(L_a)(b)=\{b\}^*=L_{ab}$\\
+$\delta(L_{ab})(a)=\{\}=\emptyset$\\
+$\delta(L_{ab})(b)=\{b\}^*=L_{ab}$\\
+$\delta(\emptyset\}(w)=\emptyset$ für $w\in X\\$
+$\left<L\right>=\{delta^{*A}(L)(w)|w\in \{a,b\}^*\}=\{L, L_a, \emptyset, L_{a,b}\}$
+
 Die Zustandsmenge ist endlich, also ist die Sprache regulär
+
 \subsection*{2)}
-\[\{a^nb^n|n\in\mathbb{N}\}\]
+\[L=\{a^nb^n | n\in\mathbb{N}\}\]
+$\delta(L)(a)=\{a^{n-1}b^n|n\in \mathbb{N}\}=L_{a^1}$\\
+$\delta(L)(b)=\emptyset$\\
+$\delta(L_{a^1})(a)=\{a^{n-2}b^n|n \in\mathbb{N}\}=L_{a^2}$\\
+$\delta(L_{a^1})(b)=\{\epsilon\}=L_{b^0}$\\
+$\delta(L_{a^2})(a)=\{a^{n-3}b^n|n\in\mathbb{N}\}=L_{a^3}$\\
+$\delta(L_{a^2})(b)=\{b\}=L_{b^1}$\\
+$\delta(L_{b^1})(a)=\emptyset$\\
+$\delta(L_{b^1})(b)=\{\epsilon\}$\\
+$\vdots$
+
+Oder allgemeiner:\\
+$L_{a^i}=\{a^{n-i}b^n|n\in\mathbb{N}\}$\\
+$L_{b^i}=\{b^i\}\\$
+$\delta(L)(a)=L_{a^1}$\\
+$\delta(L)(b)=\emptyset$\\
+$\delta(L_{b^0}(w)=\emptyset$ für $w\in X\\$
+Für $i\in\mathbb{N}$:\\
+$\delta(L_{a^i})(a)=L_{a^{i+1}}$\\
+$\delta(L_{a^i})(b)=L_{b^{i-1}}$\\
+$\delta(L_{b^i})(a)=\emptyset$\\
+$\delta(L_{b^i})(b)=L_{b^{i-1}}$\\
+$\left<L\right>=\{delta^{*A}(L)(w)|w\in \{a,b\}^*\}=\{\emptyset, L, L_{b^0}, L_{a^i}, L_{b^i} | i \in \mathbb{N} \}$\\
+
 Die Zustandsmenge ist unendlich, also ist die Sprache nicht regulär
