@@ -2,6 +2,14 @@
 \[h:coT_{DAut(X.2)}\rightarrow\mathcal{P}(X^*)\]
 \[ h(t)=\mathcal{L}(coT_{DAut(X,2)},t)=\{w\in X^*|\beta^{coT}(\delta^{*coT}(t)(w))=1\}\]
 h ist bijektiv genau dann, wenn h sowohl injektiv als auch surjektiv ist.\\
-h ist injektiv bedeutet, dass man jede Sprache einen eindeutigen $DAut(X,2)$-Coterm hat.\\
-h ist surjektiv bedeutet. dass jeder $DAut(X,2)$-Coterm eine Sprache hat.\\
+h ist injektiv bedeutet, dass jede Sprache maximal $DAut(X,2)$-Coterm hat.\\
+Annahme: Es gibt 2 verschieden Automaten $t_1$ und $t_2$, die dieselbe Sprache L beschreiben.\\
+Beweisidee: Über Strukturelle Induktion zeigen, dass $t_1$ = $t_2$
+Beide  Automaten haben einen Startzustand.\\
+$\beta(t_1)=\beta(t_2)$, da beide die selbe Sprache realisieren.\\
+Für jedes $w\in X$ ist $\delta(t_1)(w)$ bzw $\delta(t_2)(w)$ definiert, und $h(\delta(t_1)(w))=\mathcal{L}(cot_{DAut(X,2)},\delta(t_1)(w))=\{w'\in X^*|\beta(\delta(\delta(t_1)(w))(w')) = 1 \}$\\
+Induktionsannahme: $\beta(f(t_1))=$\\
+h ist surjektiv bedeutet. dass jede Sprache mindestens einen$DAut(X,2)$-Coterm hat.\\
+Da ein $DAut(X,2)$-Coterm beliebig groß, sogar unendlich ist, lässt sich durch aufzählen mit $\delta$ und $\beta$ jede (auch unendliche) Menge an Worten Beschreiben.\\
+\\
 Da beides gegeben ist, ist h bijektiv.
