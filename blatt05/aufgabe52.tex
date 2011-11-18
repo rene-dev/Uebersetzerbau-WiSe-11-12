@@ -1,0 +1,20 @@
+\section*{Aufgabe 5.2}
+\[d(0,m)=0\]
+\[d(s(n),0)=s(n)\]
+\[d(s(n),s(m))=d(n,m)\]
+
+\[\text{adiff}(n,m)=\begin{cases}
+0&$ falls $ n<m\\
+n-m& $ansonsten$
+\end{cases}\]
+\\
+Induktionsanfang: \\
+$d(0,m)=0=$ adiff$(0,m)$ da $0<=m$\\
+$d(s(n),0)=s(n)=s(n)-0=$ adiff$(s(n),0)$\\
+Induktionsschritt:\\
+Für $n<=m$\\
+$d(n,m)=$ adiff$(n,m)=n-m$\\
+$\Rightarrow d(s(n),s(m))=$ adiff$(n,m)=n-m=s(n)-s(m)=$ adiff$(s(n),s(m))$\\
+Für $n>m$:\\
+$d(n,m)=$ adiff$(n,m)=0$\\
+$\Rightarrow d(s(n),s(m))=$ adiff$(n,m)=0=$ adiff$(s(n),s(m))$\\

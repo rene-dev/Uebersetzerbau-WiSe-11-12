@@ -1,0 +1,32 @@
+\section*{Aufgabe 5.1}
+\subsection*{1)}
+Sei $A$ eine $\Sigma$-Algebra und $\sim$ eine Kongruenz auf $A$. Die natürlich Abbildung $nat_\sim:A\rightarrow A/\sim$, die jedes $a\in A$ auf seine Äquivalenzklasse $[a]_\sim$ abbildet, ist $\Sigma$-Homomorph.\\
+\\
+$nat_\sim:A\rightarrow A/\sim$\\
+$a\mapsto [a]_\sim$\\
+Zu Zeigen: $nat_\sim$ ist ein $\Sigma$-Homomomorphismus\\
+Für alle $f:e\rightarrow e' \in F$\\
+$nat_\sim\circ f^A = f^{A/\sim}\circ nat_\sim$\\
+$(f^{A/\sim}\circ nat_\sim)(a) = f^{A/\sim}(nat_\sim(a)) \\
+= f^{A/\sim}([a]_\sim)=[f^A(a)]_\sim=nat_\sim(f^A(a))=(nat_\sim\circ f^A)(a)$
+\subsection*{2)}
+Sei $h:A\rightarrow B$ ein surjektiver $\Sigma$-Homomorphismus und $ker(h)\subseteq A^2$ der Kern von $h$, d.h. $ker(h)=\{(a,b) | h(a)=h(b)\}$. $ker(h)$ ist eine Kongruenz und die Quotientenalgebra $A/ker(h)$ ist isomorph zu $B$.
+\begin{enumerate}
+\item $ker(h)$ ist eine Kongruenz\\
+Es muss gelten:
+\begin{itemize}
+\item Für alle $s\in S$ ist $ker(h)_s$ eine Äquivalenzrelation.\\
+Gilt, da $=$ eine Äquivalenzrelation ist.
+\item Für alle $f: e\rightarrow e'\in F$ und $a,b\in A_e$ gilt: $(a,b)\in ker(h)_e\Rightarrow (f^A(a),f^A(b))\in ker(h)_{e'}$\\
+Gilt, da $(a,b)\in ker(h)_e \Leftrightarrow h(a)_e=h(b)_e \Leftrightarrow f^B(h(a)_e)=f^B(h(b)_e) \Leftrightarrow h(f^A(a))_{e'}=h(f^A(a))_{e'} \Leftrightarrow (f^A(a),f^A(b))\in ker(h)_{e'}$\\
+\end{itemize}
+\item $A/ker(h)$ ist isomorph zu $B$\\
+Es muss gelten:
+\begin{itemize}
+\item Es gibt einen bijektiven $Sigma$-Homomorphismus von $A/ker(h)$ nach $B$.\\
+$h': A/ker(h) \rightarrow B$\\
+$h'(a) = h(a)$\\
+$h'$ ist surjektiv, da es für alle $b\in B$ ein $a\in A$ gibt, für die gilt $h(a)=b$ und wegen dem Aufbau von $ker(h)$ auch $h'([a]_{ker(h)})=b$.\\
+$h'$ ist injektiv. Aus der Definition von $ker(h)$ gibt es kein $a,b\in A/ker(h)$ für die gilt $h(a)=h(b)$.
+\end{itemize}
+\end{enumerate}
