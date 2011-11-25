@@ -1,0 +1,22 @@
+\section*{Aufgabe 6.1}
+\[head(u)=a\]
+\[tail(u)=u\]
+\[head(z)=a\]
+\[tail(z)=z'\]
+\[head(z')=b\]
+\[tail(z')=z\]
+\\
+\[head(even(s))=head(s)\]
+\[tail(even(s))=even(tail(tail(s)))\]
+\\
+z ist in der Form: abababababababab..\\
+u ist in der Form: aaaaaaaa...\\
+\\
+Zu zeigen $even(z)=u$\\
+Gemäß struktureller Coinduktion gilt $even(z)=u$, falls es eine binäre Relation $\sim$ auf $Y^\mathbb{N}$ gibt, welche die Relation
+\[R=\{(even(z),u)|u,z\in Y^\mathbb{N}\}\]
+enthält und die Formel
+\[u\sim z'\Rightarrow head(u)=head(z)\wedge tail(u)\sim^{eq}_\emptyset tail(z)\]
+erfüllt.\\
+Wir setzen $\sim=R$. Sei $u\sim $. Dann gibt es $z\in Y^\mathbb{N}$ mit $u=even(z)$. Daraus folgt
+\[head(u)=head(even(z)
