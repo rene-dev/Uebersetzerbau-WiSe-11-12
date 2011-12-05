@@ -1,0 +1,45 @@
+\section*{Aufgabe 7.2}
+\[fold^{Lang}(t)=\{w\in X^*|\beta^T(\delta^{*T}(t)(w))=1\}\]
+$Z=\{a,b\}\\
+CS=\emptyset\\
+X=\{a,b\}\\
+t=star((a|b)\cdot star(a))\\
+w=abab$\\
+\\
+Frage: Gilt $abab\in fold^{Lang}(star((a|b)\cdot star(a)))\\$
+Also ist $\beta^T(\delta^{*T}(star((a|b)\cdot star(a)))(abab))=1$?\\
+Es gilt $t|\emptyset=t$, $\epsilon\cdot t=t$, $t|t=t$ und $\emptyset\cdot t=\emptyset$\\
+$\beta^T(\delta^{*T}(t)(abab))=\\
+\beta^T(\delta^T(\delta^T(\delta^T(\delta^T(t)(a))(b))(a))(b))\\
+\delta^T(t)(a)=\delta^T(star((a|b)\cdot star(a)))(a)=\\
+\delta^T((a|b)\cdot star(a))(a)\cdot star((a|b)\cdot star(a))=\\
+\delta^T(a|b)(a)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+\delta^T(a)(a)|\delta^T(b)(a)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+\epsilon|\emptyset\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+star(a)\cdot star((a|b)\cdot star(a))\\
+\\
+\delta^T(star(a)\cdot star((a|b)\cdot star(a)))(b)=\\
+\delta^T(star(a))(b)\cdot star((a|b)\cdot star(a))|\delta^T(star((a|b)\cdot star(a)))(b)=\\
+\delta^T(a)(b)\cdot star(a)\cdot star((a|b)\cdot star(a))|\delta^T((a|b)\cdot star(a))(b)\cdot star((a|b)\cdot star(a))=\\
+\emptyset\cdot star(a)\cdot star((a|b)\cdot star(a))|\delta^T(a|b)(b)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+\emptyset|(\delta^T(a)(b)|\delta^T(b)(b))\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+(\emptyset|\epsilon)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+star(a)\cdot star((a|b)\cdot star(a))\\
+\\
+\delta^T(star(a)\cdot star((a|b)\cdot star(a)))(a)=\\
+\delta^T(star(a))(a)\cdot star((a|b)\cdot star(a))|\delta^T(star((a|b)\cdot star(a)))(a)=\\
+\delta^T(a)(a)\cdot star(a)\cdot star((a|b)\cdot star(a))|\delta^T((a|b)\cdot star(a))(a)\cdot star((a|b)\cdot star(a))=\\
+\epsilon\cdot star(a)\cdot star((a|b)\cdot star(a))|\delta^T(a|b)(a)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+star(a)\cdot star((a|b)\cdot star(a))|(\delta^T(a)(a)|\delta^T(b)(a))\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+star(a)\cdot star((a|b)\cdot star(a))|(\epsilon|\emptyset)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+star(a)\cdot star((a|b)\cdot star(a))|star(a)\cdot star((a|b)\cdot star(a))=\\
+star(a)\cdot star((a|b)\cdot star(a))\\$
+\\
+Wir wissen:
+$\delta^T(star(a)\cdot star((a|b)\cdot star(a)))(b)=\\
+star(a)\cdot star((a|b)\cdot star(a))$\\
+\\
+$\beta^T(star(a)\cdot star((a|b)\cdot star(a)))=\\
+\beta^T(star(a))* \beta^T(star((a|b)\cdot star(a)))=\\
+1*1=1\\
+\Rightarrow abab$ ist in der Sprache $fold^{Lang}(star((a|b)\cdot star(a)))$
