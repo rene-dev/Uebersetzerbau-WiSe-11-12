@@ -10,20 +10,12 @@ Frage: Gilt $abab\in fold^{Lang}(star((a|b)\cdot star(a)))\\$
 Also ist $\beta^T(\delta^{*T}(star((a|b)\cdot star(a)))(abab))=1$?\\
 Es gilt $t|\emptyset=t$, $\epsilon\cdot t=t$, $t|t=t$ und $\emptyset\cdot t=\emptyset$\\
 $\beta^T(\delta^{*T}(t)(abab))=\\
-\beta^T(\delta^T(\delta^T(\delta^T(\delta^T(t)(a))(b))(a))(b))\\
-\delta^T(t)(a)=\delta^T(star((a|b)\cdot star(a)))(a)=\\
-\delta^T((a|b)\cdot star(a))(a)\cdot star((a|b)\cdot star(a))=\\
-\delta^T(a|b)(a)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
-\delta^T(a)(a)|\delta^T(b)(a)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
-\epsilon|\emptyset\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
-star(a)\cdot star((a|b)\cdot star(a))\\
-\\
-\delta^T(star(a)\cdot star((a|b)\cdot star(a)))(b)=\\
-\delta^T(star(a))(b)\cdot star((a|b)\cdot star(a))|\delta^T(star((a|b)\cdot star(a)))(b)=\\
-\delta^T(a)(b)\cdot star(a)\cdot star((a|b)\cdot star(a))|\delta^T((a|b)\cdot star(a))(b)\cdot star((a|b)\cdot star(a))=\\
-\emptyset\cdot star(a)\cdot star((a|b)\cdot star(a))|\delta^T(a|b)(b)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
-\emptyset|(\delta^T(a)(b)|\delta^T(b)(b))\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
-(\emptyset|\epsilon)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+\beta^T(\delta^T(\delta^T(\delta^T(\delta^T(t)(b))(a))(b))(a))\\
+\delta^T(t)(b)=\delta^T(star((a|b)\cdot star(a)))(b)=\\
+\delta^T((a|b)\cdot star(a))(b)\cdot star((a|b)\cdot star(a))=\\
+\delta^T(a|b)(b)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+\delta^T(a)(b)|\delta^T(b)(b)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+\emptyset|\epsilon\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
 star(a)\cdot star((a|b)\cdot star(a))\\
 \\
 \delta^T(star(a)\cdot star((a|b)\cdot star(a)))(a)=\\
@@ -33,10 +25,18 @@ star(a)\cdot star((a|b)\cdot star(a))\\
 star(a)\cdot star((a|b)\cdot star(a))|(\delta^T(a)(a)|\delta^T(b)(a))\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
 star(a)\cdot star((a|b)\cdot star(a))|(\epsilon|\emptyset)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
 star(a)\cdot star((a|b)\cdot star(a))|star(a)\cdot star((a|b)\cdot star(a))=\\
-star(a)\cdot star((a|b)\cdot star(a))\\$
+star(a)\cdot star((a|b)\cdot star(a))\\
 \\
+\delta^T(star(a)\cdot star((a|b)\cdot star(a)))(b)=\\
+\delta^T(star(a))(b)\cdot star((a|b)\cdot star(a))|\delta^T(star((a|b)\cdot star(a)))(b)=\\
+\delta^T(a)(b)\cdot star(a)\cdot star((a|b)\cdot star(a))|\delta^T((a|b)\cdot star(a))(b)\cdot star((a|b)\cdot star(a))=\\
+\emptyset\cdot star(a)\cdot star((a|b)\cdot star(a))|\delta^T(a|b)(b)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+\emptyset|(\delta^T(a)(b)|\delta^T(b)(b))\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+(\emptyset|\epsilon)\cdot star(a)\cdot star((a|b)\cdot star(a))=\\
+star(a)\cdot star((a|b)\cdot star(a))\\
+\\$
 Wir wissen:
-$\delta^T(star(a)\cdot star((a|b)\cdot star(a)))(b)=\\
+$\delta^T(star(a)\cdot star((a|b)\cdot star(a)))(a)=\\
 star(a)\cdot star((a|b)\cdot star(a))$\\
 \\
 $\beta^T(star(a)\cdot star((a|b)\cdot star(a)))=\\
