@@ -13,10 +13,23 @@ z ist in der Form: abababababababab..\\
 u ist in der Form: aaaaaaaa...\\
 \\
 Zu zeigen $even(z)=u$\\
-Gemäß struktureller Coinduktion gilt $even(z)=u$, falls es eine binäre Relation $\sim$ auf $Y^\mathbb{N}$ gibt, welche die Relation
-\[R=\{(even(z),u)|u,z\in Y^\mathbb{N}\}\]
-enthält und die Formel
-\[u\sim z'\Rightarrow head(u)=head(z)\wedge tail(u)\sim^{eq}_\emptyset tail(z)\]
-erfüllt.\\
-Wir setzen $\sim=R$. Sei $u\sim $. Dann gibt es $z\in Y^\mathbb{N}$ mit $u=even(z)$. Daraus folgt
-\[head(u)=head(even(z)
+%Gemäß struktureller Coinduktion gilt $even(z)=u$, falls es eine binäre Relation $\sim$ auf $Y^\mathbb{N}$ gibt, welche die Relation
+%\[R=\{(even(z),u)|u,z\in Y^\mathbb{N}\}\]
+%enthält und die Formel
+%\[u\sim z'\Rightarrow head(u)=head(z)\wedge tail(u)\sim^{eq}_\emptyset tail(z)\]
+%erfüllt.\\
+%Wir setzen $\sim=R$. Sei $u\sim $. Dann gibt es $z\in Y^\mathbb{N}$ mit $u=even(z)$. Daraus folgt
+%\[head(u)=head(even(z)
+
+Induktionsanfang:\\
+$head(u)=a\\
+head(even(z))=head(z)=a$
+\\
+Induktionsvorraussetzung:\\
+$even(z)=u$\\
+Induktionsschritt:\\
+$tail(u)=u\\$
+$tail(even(z))=even(tail(tail(z)))=even(tail(z'))=even(z)$$\\
+\\$
+$\Rightarrow even(z)=u$\\
+\\

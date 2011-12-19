@@ -1,0 +1,114 @@
+\section*{Aufgabe 9.1}
+\[G=(\{Expr, Expr', Term, Term', Factor\},\{\mathbb{Z}\},\{+,-,*,/,(,)\},R\})\]
+R:\\
+Expr -> Term Expr'\\
+Expr' -> + Term Expr' | $\epsilon$\\
+Term -> Factor Term'\\
+Term' -> * Factor Term' | $\epsilon$\\
+Factor -> ( Expr ) | $\mathbb{Z}$\\
+\subsection*{9.1.1}
+$\Sigma(G)=(\{Expr, Expr', Term, Term', Factor\},\{\mathbb{Z}\},F)$\\
+$F=\{\\
+mkExpr : Term \times Expr' \rightarrow Expr\\
+plusExpr' : Term \times Expr' \rightarrow Expr'\\
+mtExpr' : 1 \rightarrow Expr'\\
+mkTerm : Factor \times Term' \rightarrow Term\\
+multTerm' : Factor \times Term' \rightarrow Term'\\
+mtTerm' : 1 \rightarrow Term'\\
+exp2fac : Expr \rightarrow Factor\\
+z2fac : \mathbb{Z} \rightarrow Factor\\ \}$
+\subsection*{9.1.2}
+$R=\{\\
+r_{11}=(Expr\rightarrow Term\: Expr'),\\
+r_{21}=(Expr'\rightarrow +\: Term\: Expr'), r_{22}=(Expr'\rightarrow\epsilon),\\
+r_{31}=(Term\rightarrow Factor\: Term'),\\
+r_{41}=(Term'\rightarrow *\: Factor\: Term'), r_{42}=(Term'\rightarrow\epsilon),\\
+r_{51}=(Factor\rightarrow (\: Expr\: )\:), r_{52}=(Factor\rightarrow\mathbb{Z}),\\
+\}\\
+\\
+x\in X, w\in X^*\\
+\\
+compStep_{Expr}(w)=msum[try_{r_{11}}(w)]\\
+compStep_{Expr'}(w)=msum[try_{r_{21}}(w), try_{r_{22}}(w)]\\
+compStep_{Term}(w)=msum[try_{r_{31}}(w)]\\
+compStep_{Term'}(w)=msum[try_{r_{41}}(w), try_{r_{42}}(w)]\\
+compStep_{Factor}(w)=msum[try_{r_{51}}(w), try_{r_{52}}(w)]\\
+compStep_{\mathbb{Z}}(xw)=\:if x\in\mathbb{Z} \:then \:return (x,w) \:else \:fail(x\notin\mathbb{Z})\\
+compStep_{\mathbb{Z}}{\epsilon}=fail(no input)\\
+compStep_{+}(xw)=\:if\: x = + \:then\: return(x,w) \:else \:fail(x\neq +)\\
+compStep_{+}(\epsilon)=fail(no input)\\
+compStep_{-}(xw)=\:if\: x = - \:then\: return(x,w) \:else \:fail(x\neq -)\\
+compStep_{-}(\epsilon)=fail(no input)\\
+compStep_{*}(xw)=\:if\: x = * \:then\: return(x,w) \:else \:fail(x\neq *)\\
+compStep_{*}(\epsilon)=fail(no input)\\
+compStep_{/}(xw)=\:if\: x = / \:then\: return(x,w) \:else \:fail(x\neq /)\\
+compStep_{/}(\epsilon)=fail(no input)\\
+compStep_{(}(xw)=\:if\: x = ( \:then\: return(x,w) \:else \:fail(x\neq ()\\
+compStep_{(}(\epsilon)=fail(no input)\\
+compStep_{)}(xw)=\:if\: x = ) \:then\: return(x,w) \:else \:fail(x\neq ))\\
+compStep_{)}(\epsilon)=fail(no input)\\
+\\
+try_{r_{11}}(w)=compStep_{Term}(w) >>= \lambda(a_1,w).(compStep_{Expr'}(w) >>= \lambda(a_2,w).(mkExpr(a_1,a_2)))\\
+try_{r_{21}}(w)=compStep_{+}(w) >>= \lambda(a_1,w).(compStep_{Term}(w) >>= \lambda(a_2,w).(compStep_{Expr'}(w) >>= \lambda(a_3,w).(plusExpr'(a_2,a_3))))\\
+try_{r_{22}}(w)=return(mtExpr', w)\\
+try_{r_{31}}(w)=compStep_{Factor}(w) >> \lambda(a_1,w).(compStep_{Term'}(w) >>= \lambda(a_2,w).(mkTerm(a_1,a_2)))\\
+try_{r_{41}}(w)=compStep_{*}{w} >>= \lambda(a_1,w).(compStep_{Factor}(w) >>= \lambda(a_2,w).(compStep_{Term'}(w) >>= \lambda(a_3,w).(multTerm'(a_2,a_3))))\\
+try_{r_{42}}(w)=return(mtTerm', w)\\
+try_{r_{51}}(w)=compStep_((w) >>= \lambda(a_1,w).(compStep_{Expr}(w) >>= \lambda(a_2,w).(compStep_)(w) >>= \lambda(a_3,w).(exp2fac(a_2))))\\
+try_{r_{52}}(w)=compStep_{\mathbb{Z}}(w) >>= \lambda(a_1,w).z2fac(a_1)\\
+\\
+compile^{Ziel}_{G,Expr}=compStep_{Expr}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,Expr'}=compStep_{Expr'}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,Term}=compStep_{Term}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,Term'}=compStep_{Term'}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,Factor}=compStep_{Factor}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,\mathbb{Z}}=compStep_{\mathbb{Z}}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,+}=compStep_{+}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,-}=compStep_{-}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,*}=compStep_{*}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,/}=compStep_{/}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,(}=compStep_{(}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+compile^{Ziel}_{G,)}=compStep_{)}(w) >>= \lambda(a,w).\:if\:w=\epsilon\:then\:return(a)\:else\:fail(w)\\
+$
+\subsection*{9.1.3}
+$compile^{T_{\Sigma(G)}}_G=parse_G$\\
+$parse_G(8+3*4)$ gibt den folgenden Syntaxbaum:\\
+\begin{tikzpicture}[level/.style={sibling distance=60mm/#1}]
+\node (z){mkExpr}
+  child {node (a) {mkTerm}
+    child {node (b) {z2fac}
+      child {node {8}}}
+    child {node {mtTerm'}}}
+  child {node {plusExpr'}
+    child {node {mkTerm}
+      child {node {z2fac}
+        child {node {3}}}
+      child {node {multTerm'}
+        child {node {z2fac}
+          child {node {4}}}
+        child {node {mtTerm'}}}}
+  child {node {mtExpr'}}
+};
+\end{tikzpicture}
+\section*{Aufgabe 9.2}
+Füge die Regel $start\rightarrow Expr$ zu $R$ hinzu\\
+$first(start)=\{(,\mathbb{Z}\}\\
+first(Expr)=\{(,\mathbb{Z}\}\\
+first(Expr')=\{\epsilon,+\}\\
+first(Term)=\{(,\mathbb{Z}\}\\
+first(Term')=\{\epsilon,*\}\\
+first(Factor)=\{(,\mathbb{Z}\}\\
+\text{Für }w\in BS^*\\
+first(+w)=\{+\}\\
+first(-w)=\{-\}\\
+first(*w)=\{*\}\\
+first(/w)=\{/\}\\
+first((w)=\{(\}\\
+first()w)=\{)\}\\
+\\
+follow(start)=\emptyset\\
+follow(Expr)=\{)\}\\
+follow(Expr')=\{)\}\\
+follow(Term)=\{+,)\}\\
+follow(Term')=\{+,)\}\\
+follow(Factor)=\{*,+,)\}\\$
