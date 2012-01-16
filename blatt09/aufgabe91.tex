@@ -26,7 +26,7 @@ r_{41}=(Term'\rightarrow *\: Factor\: Term'), r_{42}=(Term'\rightarrow\epsilon),
 r_{51}=(Factor\rightarrow (\: Expr\: )\:), r_{52}=(Factor\rightarrow\mathbb{Z}),\\
 \}\\
 \\
-x\in X, w\in X^*\\
+\text{Für }x\in X, w\in X^*\\
 \\
 compStep_{Expr}(w)=msum[try_{r_{11}}(w)]\\
 compStep_{Expr'}(w)=msum[try_{r_{21}}(w), try_{r_{22}}(w)]\\
@@ -34,7 +34,7 @@ compStep_{Term}(w)=msum[try_{r_{31}}(w)]\\
 compStep_{Term'}(w)=msum[try_{r_{41}}(w), try_{r_{42}}(w)]\\
 compStep_{Factor}(w)=msum[try_{r_{51}}(w), try_{r_{52}}(w)]\\
 compStep_{\mathbb{Z}}(xw)=\:if x\in\mathbb{Z} \:then \:return (x,w) \:else \:fail(x\notin\mathbb{Z})\\
-compStep_{\mathbb{Z}}{\epsilon}=fail(no input)\\
+compStep_{\mathbb{Z}}(\epsilon)=fail(no input)\\
 compStep_{+}(xw)=\:if\: x = + \:then\: return(x,w) \:else \:fail(x\neq +)\\
 compStep_{+}(\epsilon)=fail(no input)\\
 compStep_{-}(xw)=\:if\: x = - \:then\: return(x,w) \:else \:fail(x\neq -)\\

@@ -1,0 +1,80 @@
+\section*{Aufgabe 11.1}
+Wir führen zu G ein neues Startsymbol $start$ sowie die Regel $start\rightarrow E$ hinzu.
+\begin{description}
+\item[$q_0=$] $\{ (start,\epsilon,E,\epsilon),(E,\epsilon,E+T,\epsilon),(E,\epsilon,T,\epsilon),(E,\epsilon,E+T,+),(E,\epsilon,T,+),(T,\epsilon,T*U,\epsilon),(T,\epsilon,U,\epsilon),\\
+(T,\epsilon,T*U,+),(T,\epsilon,U,+),(T,\epsilon,T*U,*),(T,\epsilon,U,*),(U,\epsilon,x,\epsilon),(U,\epsilon,x,+),(U,\epsilon,x,+),\\
+(U,\epsilon,\mathbb{Z}.\epsilon),(U,\epsilon,\mathbb{Z},+),(U,\epsilon,\mathbb{Z},*)\}$
+\item[$q_1=\delta(q_0,E)=$] $\{(start,E,\epsilon,\epsilon),(E,E,+T,\epsilon),(E,E,+T,+)\}$
+\item[$q_2=\delta(q_0,T)=$] $\{(E,T,\epsilon,\epsilon),(E,T,\epsilon,+),(T,T,U,\epsilon),(T,T,*U,+),(T,T,*U,*)\}$
+\item[$q_3=\delta(q_0,U)=\delta(q_6,U)=$] $\{(T,U,\epsilon,\epsilon),(T,U,\epsilon,+),(T,U,\epsilon,*)\}$
+\item[$q_4=\delta(q_0,x)=\delta(q_6,x)=\delta(q_7,x)=$] $\{(U,x,\epsilon,\epsilon),(U,x,\epsilon,*),(U,x,\epsilon,+)\}$
+\item[$q_5=\delta(q_0,\mathbb{Z})=\delta(q_6,\mathbb{Z})=\delta(q_7,\mathbb{Z})=$] $\{(U,\mathbb{Z},\epsilon,\epsilon),(U,\mathbb{Z},\epsilon,*),(U,\mathbb{Z},\epsilon,+)\}$
+\item[$q_6=\delta(q_1,+)=$] $\{(E,E+,T,\epsilon),(E,E+,T,+),(T,\epsilon,T*U,\epsilon),(T,\epsilon,T*U,+),(T,\epsilon,U,\epsilon),\\
+(T,\epsilon,U,+),(T,\epsilon,T,*),(U,\epsilon,\mathbb{Z},\epsilon),(U,\epsilon,x,+),(U,\epsilon,\mathbb{Z},+),(T,\epsilon,T*U,*),\\
+(T,\epsilon,U,*),(U,\epsilon,x,*),(U,\epsilon,\mathbb{Z},*)\}$
+\item[$q_7=\delta(q_2,*)=\delta(q_8,*)=$] $\{(T,T*,U,\epsilon),(T,T*,U,+),(T,T*,U,*).(U,\epsilon,x,\epsilon),(U,\epsilon,x,+),\\
+(U,\epsilon,x,*),(U,\epsilon,\mathbb{Z},+),(U,\epsilon,\mathbb{Z},*)\}$
+\item[$q_8=\delta(q_6,T)=$] $\{(E,E+T,\epsilon,\epsilon),(E,E+T,\epsilon,+),(T,T,*U,\epsilon),(T,T,*U,+),(T,T,\epsilon,*),(T,T,*U,*)\}$
+\item[$q_9=\delta(q_7,U)=$] $\{(T,T*U,\epsilon,\epsilon),(T,T*U,\epsilon,+),(T,T+U,\epsilon,*)\}$
+\end{description}
+\subsection*{Goto-Tabelle}
+\begin{tabular}{c|cccccccc}
+&$start$&$E$&$T$&$U$&$+$&$*$&$x$&$\mathbb{Z}$\\
+\hline
+$q_0$&&$q_1$&$q_2$&$q_3$&&&$q_4$&$q_5$\\
+$q_1$&&&&&$q_6$&&&\\
+$q_2$&&&&&&$q_7$&&\\
+$q_6$&&&$q_8$&$q_3$&&&$q_4$&$q_5$\\
+$q_7$&&&&$q_9$&&&$q_4$&$q_5$\\
+$q_8$&&&&&&$q_7$&&\\
+\end{tabular}
+\subsection*{Aktionstabelle}
+\begin{tabular}{c|ccccc}
+&$\epsilon$&$+$&$*$&$x$&$\mathbb{Z}$\\
+\hline
+$q_0$&&&&$x$&$\mathbb{Z}$\\
+$q_1$&$start\rightarrow E$&$+$&&&\\
+$q_2$&$E\rightarrow T$&$E\rightarrow T$&$*$&&\\
+$q_3$&$T\rightarrow U$&$T\rightarrow U$&$T\rightarrow U$&\\
+$q_4$&$U\rightarrow x$&$U\rightarrow x$&$U\rightarrow x$\\
+$q_5$&$U\rightarrow \mathbb{Z}$&$U\rightarrow \mathbb{Z}$&$U\rightarrow \mathbb{Z}$\\
+$q_6$&&&&$x$&$\mathbb{Z}$\\
+$q_7$&&&&$x$&$\mathbb{Z}$\\
+$q_8$&$E\rightarrow E+T$&$E\rightarrow E+T$&$*$\\
+$q_9$&$T\rightarrow T*U$&$T\rightarrow T*U$&$T\rightarrow T*U$\\
+\end{tabular}
+\subsection*{Abstrakte Syntax}
+$(S,CS,F)$ mit $S=\{start,E,T,U\}, CS=\{\mathbb{Z}, 1\}$ und $F:$\\
+$mkStart: E \rightarrow start\\
+mkE:E\times T\rightarrow E\\
+mkE':T\rightarrow E\\
+mkT:T\times U \rightarrow T\\
+mkT': U\rightarrow T\\
+mtU: 1\rightarrow U\\
+z2U: \mathbb{Z}\rightarrow U$
+\subsection*{Zielalgebra $\mathcal{A}$}
+$mkStart^\mathcal{A}(e)=\lambda x\rightarrow e\\
+mkE^\mathcal{A}(e,t)=e+t\\
+mkE'^\mathcal{A}(t)=t\\
+mkT^\mathcal{A}(t,u)=$if $(t=x$ and $u=x)$ then $t^{2}$ else if $(t=x^y$ and $u=x)$ then $x^{y+1}$ else if $(t \in \mathbb{Z}$ and $u=x)$ then $tu$ else $t*u\\
+mkT'^\mathcal{A}(u)=u\\
+mtU^\mathcal{A}(*)=x\\
+z2U^\mathcal{A}(z)=z$\\
+\subsection*{LR(k)-Compiler}
+$compile(q_0:qs,\epsilon, as)=fail(error)\\
+compile(q_0:qs,+:w,as)=fail(error)\\
+compile(q_0:qs,*:w,as)=fail(error)\\
+compile(q_0:qs,x:w,as)=compile(q_4:q_0:qs,w,as)\\
+compile(q_0:qs,\mathbb{Z}:w,as)=compile(q_5:q0:qs,w,as)\\	
+compile(q_1:qs,\epsilon,[a_1,..,a_n])=return(mkStart^\mathcal{A}(a_1,...,a_n))\\
+compile(q_1:qs,+:w,as)=compile(q_6:q_1:qs,w,as)\\
+compile(q_1:qs,*:w,as)=fail(error)\\
+compile(q_1:qs,x:w,as)=fail(error)\\
+compile(q_1:qs,\mathbb{Z}:w,as)=fail(error)\\
+compile(q_2:...:q_n:q:qs,\epsilon,as++[a_2,...,a_n])=compile(\\
+compile(q_2:qs,+:w,as)=\\
+compile(q_2:qs,*:w,as)=\\
+compile(q_2:qs,x:w,as)=\\
+compile(q_2:qs,\mathbb{Z}:w,as)=\\$
+
+
