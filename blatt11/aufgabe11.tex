@@ -60,7 +60,7 @@ mkT^\mathcal{A}(t,u)=$if $(t=x$ and $u=x)$ then $t^{2}$ else if $(t=x^y$ and $u=
 mkT'^\mathcal{A}(u)=u\\
 mtU^\mathcal{A}(*)=x\\
 z2U^\mathcal{A}(z)=z$\\
-\subsection*{LR(k)-Compiler}
+\subsection*{LR(1)-Compiler}
 $compile(q_0:qs,\epsilon, as)=fail(error)\\
 compile(q_0:qs,+:w,as)=fail(error)\\
 compile(q_0:qs,*:w,as)=fail(error)\\
@@ -71,8 +71,9 @@ compile(q_1:qs,+:w,as)=compile(q_6:q_1:qs,w,as)\\
 compile(q_1:qs,*:w,as)=fail(error)\\
 compile(q_1:qs,x:w,as)=fail(error)\\
 compile(q_1:qs,\mathbb{Z}:w,as)=fail(error)\\
-compile(q_2:...:q_n:q:qs,\epsilon,as++[a_2,...,a_n])=compile(\\
-compile(q_2:qs,+:w,as)=\\
+compile(q_2:...:q_n:q:qs,\epsilon,as++[a_2,...,a_n])=compile(\\ $ Ich verstehe hier leider die Notation im Skript nicht... (Definition compile, Seite 147, zweite Regel)\\
+Zustände auf dem Zustandsstack werden ersetzt, und die entsprechenden Berechnungen $a_1$ bis $a_n$ werden als Parameter der entsprechenden Funktion übergeben. Aber wie viele das jetzt sind, und vor allen Dingen welche, und wie ausgewählt erschließt sich mir nicht.\\
+$compile(q_2:qs,+:w,as)=\\
 compile(q_2:qs,*:w,as)=\\
 compile(q_2:qs,x:w,as)=\\
 compile(q_2:qs,\mathbb{Z}:w,as)=\\$
